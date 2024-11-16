@@ -2,7 +2,6 @@ import '/style.css'
 
 let hint = true
 $('#magazine').turn({ gradients: true, acceleration: true, when: { turning: () => { hint = false } } });
-$('#magazine').turn("peel" , "tr");
 
 if (window.innerWidth > 1280) {
     document.getElementById("modelLink").className = "absolute top-12 w-[250px] h-[200px]"
@@ -15,8 +14,13 @@ if (window.innerWidth > 1280) {
 }
 
 setInterval(() => {
-    console.log(hint);
     if (hint == true) {
-        document.getElementById("hintWrapper").classList.toggle("invisible");
+        $('#magazine').turn("peel", "tr");
     }
-}, 600)
+}, 1000)
+
+setInterval(() => {
+    if (hint == true) {
+        $('#magazine').turn("peel", false);
+    }
+}, 2000)
