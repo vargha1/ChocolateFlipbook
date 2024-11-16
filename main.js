@@ -1,6 +1,8 @@
 import '/style.css'
 
-$('#magazine').turn({ gradients: true, acceleration: true });
+let hint = true
+$('#magazine').turn({ gradients: true, acceleration: true, when: { turning: () => { hint = false } } });
+$('#magazine').turn("peel" , "tr");
 
 if (window.innerWidth > 1280) {
     document.getElementById("modelLink").className = "absolute top-12 w-[250px] h-[200px]"
@@ -11,3 +13,10 @@ if (window.innerWidth > 1280) {
     document.getElementById("image5").setAttribute("src", "images/5ps.png")
     document.getElementById("image6").setAttribute("src", "images/6ps.png")
 }
+
+setInterval(() => {
+    console.log(hint);
+    if (hint == true) {
+        document.getElementById("hintWrapper").classList.toggle("invisible");
+    }
+}, 600)
