@@ -24,3 +24,7 @@ setInterval(() => {
         $('#magazine').turn("peel", false);
     }
 }, 2000)
+
+setInterval(() => {
+    document.getElementById("arrow").classList.toggle("invisible")
+}, 1000)
